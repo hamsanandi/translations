@@ -12,9 +12,9 @@ You can view the compositions here:
 
 The site includes:
 
-- Notated compositions (HTML format)
+- Translations, many a times including the original verses (HTML format)
 - Structured presentation for easy reading and reference
-- Individual pages for each composition
+- Individual pages for each work
 
 ## 🗂 Repository Structure
 
