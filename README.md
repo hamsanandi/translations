@@ -1,2 +1,2 @@
-This repository contains translations of music compositions from the Hamsanandi collection.
+This repository contains translations by @hamsanandi.
 Its purpose is to organize translations clearly by language and make them easy to browse, update, and expand over time.
