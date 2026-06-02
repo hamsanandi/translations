@@ -1,82 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
-  <meta charset="UTF-8">
-  <title>Translations – Hamsanandi</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      line-height: 1.7;
-      background: #fafafa;
-      color: #222;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .folder-box {
-      background: white;
-      padding: 1.2rem 1.5rem;
-      border-radius: 8px;
-      border-left: 5px solid #c28b00;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
-    h2 {
-      margin-top: 0;
-      color: #444;
-    }
-    a {
-      text-decoration: none;
-      color: #005bbb;
-      font-weight: 500;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 0.5rem;
-    }
-    li {
-      margin: 0.4rem 0;
-    }
-    .note {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #666;
-      border-top: 1px solid #ddd;
-      padding-top: 1rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Translations – Hamsanandi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+Kannada:wght@400;600&family=Noto+Serif+Kannada:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #8b5e1a; --gold-light: #6b4510; --gold-dim: #a0783a;
+  --bg: #ffffff; --section-bg: #fdf9f3; --header-bg: #f5ede0;
+  --border: #d4c5a9; --border-light: #c0aa88; --text: #1a1208; --meta: #8a7055;
+}
+body { font-family:'EB Garamond',serif; background:var(--bg); color:var(--text); max-width:860px; margin:0 auto; padding:0 0 60px; font-size:16px; line-height:1.6; }
+
+/* ── Top nav bar ── */
+.site-nav { background:var(--header-bg); border-bottom:1px solid var(--border); padding:0 20px; display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:42px; position:sticky; top:0; z-index:100; }
+.nav-home { font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.2em; color:var(--gold); text-decoration:none; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+.nav-home.kn { font-family:'Noto Serif Kannada',serif; letter-spacing:0.05em; text-transform:none; font-size:0.88rem; }
+.nav-home:hover { text-decoration:underline; }
+.nav-links { display:flex; align-items:center; gap:0; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+.nav-links::-webkit-scrollbar { display:none; }
+.nav-link { font-family:'EB Garamond',serif; font-size:0.78rem; color:var(--meta); text-decoration:none; padding:0 10px; line-height:42px; white-space:nowrap; border-left:1px solid var(--border); transition:color 0.15s,background 0.15s; }
+.nav-link:first-child { border-left:none; }
+.nav-link:hover { color:var(--gold); background:rgba(139,94,26,0.06); }
+.nav-link.active-section { color:var(--gold); font-weight:600; }
+.nav-link.kn { font-family:'Noto Sans Kannada',sans-serif; font-size:0.72rem; }
+
+/* ── Page header ── */
+.page-header { text-align:center; padding:36px 20px 24px; border-bottom:1px solid var(--border); position:relative; }
+.page-header::after { content:''; display:block; height:2px; width:120px; margin:0 auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); position:absolute; bottom:-1px; left:50%; transform:translateX(-50%); }
+.page-title { font-family:'Cinzel',serif; font-size:1.5rem; letter-spacing:0.22em; color:var(--gold); text-transform:uppercase; }
+.page-title.kn { font-family:'Noto Serif Kannada',serif; letter-spacing:0.05em; text-transform:none; }
+.page-subtitle { font-size:0.95em; color:var(--gold-dim); margin-top:5px; font-style:italic; }
+.page-subtitle.kn { font-family:'Noto Sans Kannada',sans-serif; font-style:normal; }
+
+/* ── Lang toggle ── */
+.lang-toggle { position:absolute; top:20px; right:20px; background:var(--header-bg); border:1px solid var(--border-light); border-radius:20px; padding:5px 4px; display:flex; gap:3px; }
+.lang-btn { font-size:0.75rem; padding:4px 10px; border-radius:16px; border:none; background:none; cursor:pointer; color:var(--meta); font-family:'EB Garamond',serif; transition:all 0.18s; }
+.lang-btn.active { background:var(--gold); color:#fff; font-weight:600; }
+.lang-btn.kn-btn { font-family:'Noto Sans Kannada',sans-serif; font-size:0.8rem; }
+
+/* ── Intro ── */
+.intro { max-width:680px; margin:20px auto 0; font-size:1em; line-height:1.75; padding:0 20px; color:var(--meta); text-align:center; }
+.intro.kn { font-family:'Noto Sans Kannada',sans-serif; }
+
+/* ── Source language sections ── */
+.translations-root { padding:0 20px; margin-top:28px; }
+
+.source-section { margin-bottom:32px; }
+
+.source-heading {
+  font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.3em;
+  text-transform:uppercase; color:var(--meta);
+  padding-bottom:6px; border-bottom:1px solid var(--border);
+  margin-bottom:12px;
+}
+.source-heading.kn { font-family:'Noto Sans Kannada',sans-serif; letter-spacing:0.05em; text-transform:none; font-size:1rem; }
+
+/* ── Translation entry card ── */
+.trans-entry {
+  display:block;
+  background:var(--section-bg);
+  border:1px solid var(--border);
+  border-left:4px solid var(--gold-dim);
+  border-radius:6px;
+  padding:14px 18px;
+  margin-bottom:10px;
+  text-decoration:none;
+  transition:background 0.15s, border-color 0.18s, transform 0.15s, box-shadow 0.15s;
+}
+.trans-entry:hover {
+  background:var(--header-bg);
+  border-left-color:var(--gold);
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,0.07);
+}
+.trans-title {
+  font-family:'EB Garamond',serif;
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--gold-light);
+}
+.trans-title.kn { font-family:'Noto Serif Kannada',serif; }
+.trans-meta {
+  font-size:0.85em;
+  color:var(--meta);
+  margin-top:3px;
+}
+.trans-meta.kn { font-family:'Noto Sans Kannada',sans-serif; }
+.trans-arrow {
+  float:right;
+  font-size:0.9rem;
+  color:var(--border-light);
+  transition:color 0.15s, transform 0.15s;
+  margin-top:2px;
+}
+.trans-entry:hover .trans-arrow { color:var(--gold); transform:translateX(3px); }
+
+/* ── Empty state ── */
+.empty-state {
+  font-size:0.9em;
+  color:var(--border-light);
+  font-style:italic;
+  padding:10px 4px;
+}
+.empty-state.kn { font-family:'Noto Sans Kannada',sans-serif; font-style:normal; }
+
+/* ── Divider & About ── */
+.section-divider { height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); margin:32px 20px 0; }
+.about-section { max-width:680px; margin:28px auto 0; padding:0 20px; line-height:1.8; font-size:0.95em; text-align:center; }
+.about-section.kn { font-family:'Noto Sans Kannada',sans-serif; }
+.about-title { font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.25em; color:var(--gold); text-transform:uppercase; margin-bottom:10px; }
+.about-title.kn { font-family:'Noto Serif Kannada',serif; letter-spacing:0.05em; text-transform:none; font-size:1rem; }
+a { text-decoration:none; color:var(--gold-light); }
+a:hover { text-decoration:underline; }
+footer { text-align:center; color:var(--meta); margin-top:48px; padding-top:20px; border-top:1px solid var(--border); font-size:0.80em; padding-left:20px; padding-right:20px; }
+footer.kn { font-family:'Noto Sans Kannada',sans-serif; }
+
+/* ── Responsive ── */
+@media (max-width:600px) {
+  .site-nav { flex-wrap:wrap; padding:8px 12px; min-height:unset; }
+  .nav-home { width:100%; padding-bottom:6px; line-height:1.4; }
+  .nav-links { width:100%; overflow-x:auto; }
+  .nav-link { font-size:0.72rem; padding:0 8px; line-height:32px; }
+  .lang-toggle { position:static; margin:12px auto 0; }
+  .page-header { padding:24px 20px 20px; }
+}
+</style>
 </head>
 <body>
 
-  <h1>Hamsanandi – Translations</h1>
+<!-- ── Sticky nav bar ── -->
+<nav class="site-nav" id="siteNav" aria-label="Site navigation">
+  <a class="nav-home" id="navHome" href="https://hamsanandi.github.io/">Hamsanandi</a>
+  <div class="nav-links" id="navLinks"></div>
+</nav>
 
-  <div class="folder-box">
-    <h2>From Sanskrit</h2>
-    <ul>
-      <li><a href="sanskrit/">Browse all Sanskrit translations</a></li>
-      <li><a href="sanskrit/kanakadhara-kannada.html">Kanakadhara Stotra – Kannada Translation</a></li>
-    </ul>
+<!-- ── Page header ── -->
+<div class="page-header">
+  <div class="lang-toggle" id="langToggle">
+    <button class="lang-btn active" id="btnEN">EN</button>
+    <button class="lang-btn kn-btn" id="btnKN">ಕನ್ನಡ</button>
   </div>
+  <div class="page-title" id="pageTitle">Translations</div>
+  <div class="page-subtitle" id="pageSubtitle">Literary translations from classical languages into Kannada and English</div>
+</div>
 
-  <div class="folder-box">
-    <h2>From Others</h2>
-    <ul>
-      <li><a href="Others/">Browse all translations from other languages</a></li>
-      <!-- Add links to individual HTML files here -->
-    </ul>
-  </div>
+<p class="intro" id="introText">Translations of classical Sanskrit and other literary works, rendered into Kannada and English. Each translation seeks to preserve the mood and spirit of the original.</p>
 
-  <div class="note">
-    <p>Add new translation files inside <code>Sanskrit/</code> or <code>Others/</code> and update this index to link them.</p>
-  </div>
+<!-- ── Translation entries ── -->
+<div class="translations-root" id="translationsRoot"></div>
 
+<hr class="section-divider">
+
+<section class="about-section" id="aboutSection">
+  <div class="about-title" id="aboutTitle">About the Translator</div>
+  <p id="aboutP1">Ramaprasad KV is a vaggeyakara, translator, and author working within the Karnataka Sangeeta and Kannada literary traditions.</p>
+  <p style="margin-top:10px;"><a href="https://hamsanandi.github.io/#aboutSection">Read more ›</a> &nbsp;·&nbsp; Instagram: <a href="https://www.instagram.com/hamsanandi" target="_blank">@hamsanandi</a></p>
+</section>
+
+<footer id="footerEl">Hosted on GitHub Pages</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   BILINGUAL STRINGS
+   ═══════════════════════════════════════════════════════════════ */
+const STR = {
+  en: {
+    pageTitle:"Translations", pageTitleClass:"page-title",
+    pageSubtitle:"Literary translations from classical languages into Kannada and English",
+    pageSubtitleClass:"page-subtitle",
+    intro:"Translations of classical Sanskrit and other literary works, rendered into Kannada and English. Each translation seeks to preserve the mood and spirit of the original.",
+    introClass:"intro",
+    aboutTitle:"About the Translator", aboutTitleClass:"about-title",
+    aboutSectionClass:"about-section",
+    aboutP1:"Ramaprasad KV is a vaggeyakara, translator, and author working within the Karnataka Sangeeta and Kannada literary traditions.",
+    footer:"Hosted on GitHub Pages", footerClass:"",
+    navHome:"Hamsanandi", navHomeClass:"nav-home",
+    emptyState:"Translations coming soon."
+  },
+  kn: {
+    pageTitle:"ಅನುವಾದಗಳು", pageTitleClass:"page-title kn",
+    pageSubtitle:"ಸಂಸ್ಕೃತ ಮತ್ತು ಇತರ ಶಾಸ್ತ್ರೀಯ ಭಾಷೆಗಳಿಂದ ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್‌ಗೆ ಸಾಹಿತ್ಯಿಕ ಅನುವಾದಗಳು",
+    pageSubtitleClass:"page-subtitle kn",
+    intro:"ಸಂಸ್ಕೃತ ಮತ್ತು ಇತರ ಶಾಸ್ತ್ರೀಯ ಸಾಹಿತ್ಯ ಕೃತಿಗಳ ಕನ್ನಡ ಮತ್ತು ಇಂಗ್ಲಿಷ್ ಅನುವಾದಗಳು. ಪ್ರತಿ ಅನುವಾದದಲ್ಲಿ ಮೂಲ ಕೃತಿಯ ಭಾವ ಮತ್ತು ರಸವನ್ನು ಕಾಪಾಡುವ ಪ್ರಯತ್ನ ಮಾಡಲಾಗಿದೆ.",
+    introClass:"intro kn",
+    aboutTitle:"ಅನುವಾದಕರ ಕುರಿತು", aboutTitleClass:"about-title kn",
+    aboutSectionClass:"about-section kn",
+    aboutP1:"ರಾಮಪ್ರಸಾದ್ ಕೆ.ವಿ. ಅವರು ಕರ್ನಾಟಕ ಸಂಗೀತ ಮತ್ತು ಕನ್ನಡ ಸಾಹಿತ್ಯ ಪರಂಪರೆಯ ವಾಗ್ಗೇಯಕಾರರು, ಅನುವಾದಕರು ಮತ್ತು ಲೇಖಕರು.",
+    footer:"GitHub Pages ನಲ್ಲಿ ಪ್ರಕಾಶಿತ", footerClass:"kn",
+    navHome:"ಹಂಸಾನಂದಿ", navHomeClass:"nav-home kn",
+    emptyState:"ಅನುವಾದಗಳು ಶೀಘ್ರದಲ್ಲಿ ಬರಲಿವೆ."
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   TRANSLATION DATA
+   ─────────────────────────────────────────────────────────────
+   Structure of each entry:
+   {
+     en: { title, description, targetLang },
+     kn: { title, description, targetLang },
+     file: "relative/path/to/file.html"   ← the HTML page for this translation
+   }
+
+   To add a new translation, copy an entry block and fill in the details.
+   ═══════════════════════════════════════════════════════════════ */
+const DATA = {
+
+  /* ─────────────────────────────────────────────────────────────
+     FROM SANSKRIT  (source: Sanskrit)
+     Add new Sanskrit translations below this line.
+     ───────────────────────────────────────────────────────────── */
+  sanskrit: [
+
+    {
+      en: { title:"Kanakadhāra Stotra", description:"A hymn to Lakshmi attributed to Ādi Śaṅkarācārya", targetLang:"Kannada" },
+      kn: { title:"ಕನಕಧಾರ ಸ್ತೋತ್ರ", description:"ಆದಿ ಶಂಕರಾಚಾರ್ಯರ ಲಕ್ಷ್ಮೀ ಸ್ತೋತ್ರದ ಕನ್ನಡ ಅನುವಾದ", targetLang:"ಕನ್ನಡ" },
+      file:"sanskrit/kanakadhara-kannada.html"
+    },
+
+    /* ── ADD MORE SANSKRIT TRANSLATIONS HERE ──
+    {
+      en: { title:"", description:"", targetLang:"Kannada" },
+      kn: { title:"", description:"", targetLang:"ಕನ್ನಡ" },
+      file:"sanskrit/your-file.html"
+    },
+    */
+
+  ],
+
+  /* ─────────────────────────────────────────────────────────────
+     FROM PRAKRIT  (source: Prakrit / Apabhramsha)
+     Add new Prakrit translations below this line.
+     ───────────────────────────────────────────────────────────── */
+  prakrit: [
+
+    /* ── ADD PRAKRIT TRANSLATIONS HERE ──
+    {
+      en: { title:"", description:"", targetLang:"Kannada" },
+      kn: { title:"", description:"", targetLang:"ಕನ್ನಡ" },
+      file:"prakrit/your-file.html"
+    },
+    */
+
+  ],
+
+  /* ─────────────────────────────────────────────────────────────
+     FROM OTHER LANGUAGES  (Tamil, Telugu, Hindi, etc.)
+     Add new translations from other languages below this line.
+     ───────────────────────────────────────────────────────────── */
+  others: [
+
+    /* ── ADD OTHER-LANGUAGE TRANSLATIONS HERE ──
+    {
+      en: { title:"", description:"", targetLang:"Kannada" },
+      kn: { title:"", description:"", targetLang:"ಕನ್ನಡ" },
+      file:"others/your-file.html"
+    },
+    */
+
+  ]
+
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION LABELS
+   Add a new entry here if you add a new source language above.
+   ═══════════════════════════════════════════════════════════════ */
+const SECTIONS = [
+  { key:"sanskrit",  en:"From Sanskrit",        kn:"ಸಂಸ್ಕೃತದಿಂದ" },
+  { key:"prakrit",   en:"From Prakrit",          kn:"ಪ್ರಾಕೃತದಿಂದ" },
+  { key:"others",    en:"From Other Languages",  kn:"ಇತರ ಭಾಷೆಗಳಿಂದ" }
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   NAV SECTIONS
+   ═══════════════════════════════════════════════════════════════ */
+const NAV_SECTIONS = [
+  { en:"Compositions",      kn:"ರಚನೆಗಳು",        url:"https://hamsanandi.github.io/compositions/" },
+  { en:"Articles",          kn:"ಲೇಖನಗಳು",         url:"https://hamsanandi.github.io/articles/" },
+  { en:"Books",             kn:"ಪುಸ್ತಕಗಳು",       url:"https://hamsanandi.github.io/books/" },
+  { en:"Metrical Poetry",   kn:"ಛಂದೋಬದ್ಧ ಕಾವ್ಯ",  url:"https://hamsanandi.github.io/poetry/" },
+  { en:"Stage Productions", kn:"ರಂಗಪ್ರಯೋಗಗಳು",   url:"https://hamsanandi.github.io/stage-productions/" },
+  { en:"Gamaka Vachana",    kn:"ಗಮಕ ವಾಚನ",        url:"https://hamsanandi.github.io/gamaka-vachana/" },
+  { en:"Translations",      kn:"ಅನುವಾದಗಳು",       url:"https://hamsanandi.github.io/translations/", current:true },
+  { en:"Reviews",           kn:"ವಿಮರ್ಶೆಗಳು",      url:"https://hamsanandi.github.io/reviews/" }
+  // { en:"Kaleidoscope", kn:"ವೈವಿಧ್ಯ", url:"https://hamsanandi.github.io/kaleidoscope/" }  ← uncomment when live
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDER
+   ═══════════════════════════════════════════════════════════════ */
+let lang = 'en';
+
+function renderNav(l) {
+  const navHome = document.getElementById('navHome');
+  navHome.textContent = STR[l].navHome;
+  navHome.className   = STR[l].navHomeClass;
+  const navLinks = document.getElementById('navLinks');
+  navLinks.innerHTML = '';
+  NAV_SECTIONS.forEach(s => {
+    const a = document.createElement('a');
+    a.href      = s.url;
+    a.textContent = s[l];
+    a.className = 'nav-link' + (l === 'kn' ? ' kn' : '') + (s.current ? ' active-section' : '');
+    navLinks.appendChild(a);
+  });
+}
+
+function renderTranslations(l) {
+  const s   = STR[l];
+  const root = document.getElementById('translationsRoot');
+  root.innerHTML = '';
+
+  SECTIONS.forEach(sec => {
+    const items = DATA[sec.key] || [];
+
+    const section = document.createElement('div');
+    section.className = 'source-section';
+
+    const heading = document.createElement('div');
+    heading.className = 'source-heading' + (l === 'kn' ? ' kn' : '');
+    heading.textContent = sec[l];
+    section.appendChild(heading);
+
+    if (items.length === 0) {
+      const empty = document.createElement('p');
+      empty.className = 'empty-state' + (l === 'kn' ? ' kn' : '');
+      empty.textContent = s.emptyState;
+      section.appendChild(empty);
+    } else {
+      items.forEach(item => {
+        const a = document.createElement('a');
+        a.className = 'trans-entry';
+        a.href      = item.file;
+
+        const arrow = document.createElement('span');
+        arrow.className   = 'trans-arrow';
+        arrow.textContent = '→';
+        a.appendChild(arrow);
+
+        const title = document.createElement('div');
+        title.className   = 'trans-title' + (l === 'kn' ? ' kn' : '');
+        title.textContent = item[l].title;
+        a.appendChild(title);
+
+        const meta = document.createElement('div');
+        meta.className   = 'trans-meta' + (l === 'kn' ? ' kn' : '');
+        meta.textContent = item[l].description
+          + (item[l].targetLang ? '  ·  Into ' + item[l].targetLang : '');
+        a.appendChild(meta);
+
+        section.appendChild(a);
+      });
+    }
+
+    root.appendChild(section);
+  });
+}
+
+function applyLang(l) {
+  const s = STR[l];
+  document.getElementById('htmlRoot').lang       = l === 'kn' ? 'kn' : 'en';
+  document.getElementById('pageTitle').textContent    = s.pageTitle;
+  document.getElementById('pageTitle').className      = s.pageTitleClass;
+  document.getElementById('pageSubtitle').textContent = s.pageSubtitle;
+  document.getElementById('pageSubtitle').className   = s.pageSubtitleClass;
+  document.getElementById('introText').textContent    = s.intro;
+  document.getElementById('introText').className      = s.introClass;
+  document.getElementById('aboutTitle').textContent   = s.aboutTitle;
+  document.getElementById('aboutTitle').className     = s.aboutTitleClass;
+  document.getElementById('aboutSection').className   = s.aboutSectionClass;
+  document.getElementById('aboutP1').textContent      = s.aboutP1;
+  document.getElementById('footerEl').textContent     = s.footer;
+  document.getElementById('footerEl').className       = 'footer ' + (s.footerClass || '');
+  document.getElementById('btnEN').classList.toggle('active', l === 'en');
+  document.getElementById('btnKN').classList.toggle('active', l === 'kn');
+  renderNav(l);
+  renderTranslations(l);
+}
+
+document.getElementById('langToggle').addEventListener('click', e => {
+  const btn = e.target.closest('.lang-btn');
+  if (!btn) return;
+  lang = btn.id === 'btnKN' ? 'kn' : 'en';
+  applyLang(lang);
+});
+
+applyLang('en');
+</script>
 </body>
 </html>
